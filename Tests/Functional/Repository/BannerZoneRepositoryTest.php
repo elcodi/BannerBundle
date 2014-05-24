@@ -12,14 +12,14 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\BannerBundle\Tests\Functional\Factory;
+namespace Elcodi\BannerBundle\Tests\Functional\Repository;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
- * Class BannerFactoryTest
+ * Class BannerZoneRepositoryTest
  */
-class BannerFactoryTest extends WebTestCase
+class BannerZoneRepositoryTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -29,30 +29,30 @@ class BannerFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.banner.factory.banner',
-            'elcodi.factory.banner',
+            'elcodi.core.banner.repository.bannerzone',
+            'elcodi.repository.bannerzone',
         ];
     }
 
     /**
-     * Test banner factory provider
+     * Test bannerzone repository provider
      */
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.banner.entity.banner.class'),
-            $this->container->get('elcodi.core.banner.entity.banner.instance')
+            $this->container->getParameter('elcodi.core.banner.repository.bannerzone.class'),
+            $this->container->get('elcodi.core.banner.repository.bannerzone')
         );
     }
 
     /**
-     * Test banner factory provider alias
+     * Test bannerzone repository provider alias
      */
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.banner.entity.banner.class'),
-            $this->container->get('elcodi.entity.banner.instance')
+            $this->container->getParameter('elcodi.core.banner.repository.bannerzone.class'),
+            $this->container->get('elcodi.repository.bannerzone')
         );
     }
 }
