@@ -12,16 +12,15 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\BannerBundle\Tests\Functional\Form\Type;
+namespace Elcodi\BannerBundle\Tests\Functional\Factory;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
- * Tests BannerZoneType class
+ * Class BannerFactoryTest
  */
-class BannerZoneTypeTest extends WebTestCase
+class BannerFactoryTest extends WebTestCase
 {
-
     /**
      * Returns the callable name of the service
      *
@@ -29,6 +28,17 @@ class BannerZoneTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.banner.form_type.bannerzone';
+        return 'elcodi.core.banner.factory.banner';
+    }
+
+    /**
+     * Test banner factory provider
+     */
+    public function testFactoryProvider()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.banner.entity.banner.class'),
+            $this->container->get('elcodi.core.banner.entity.banner.instance')
+        );
     }
 }
