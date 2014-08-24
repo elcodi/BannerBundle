@@ -1,0 +1,55 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity banner
+    #
+    elcodi.core.banner.factory.banner:
+        class: %elcodi.core.banner.factory.banner.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.banner.entity.banner.class%"]]
+
+    elcodi.factory.banner:
+        alias: elcodi.core.banner.factory.banner
+
+    #
+    # Factory for entity banner_zone
+    #
+    elcodi.core.banner.factory.banner_zone:
+        class: %elcodi.core.banner.factory.banner_zone.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.banner.entity.banner_zone.class%"]]
+
+    elcodi.factory.banner_zone:
+        alias: elcodi.core.banner.factory.banner_zone
+
+    #
+    # Entity providers
+    #
+
+    #
+    # Instance provider for entity banner
+    #
+    elcodi.core.banner.entity.banner.instance:
+        class: %elcodi.core.banner.entity.banner.class%
+        factory_service: elcodi.core.banner.factory.banner
+        factory_method: create
+        scope: prototype
+
+    elcodi.entity.banner.instance:
+        alias: elcodi.core.banner.entity.banner.instance
+
+    #
+    # Instance provider for entity banner_zone
+    #
+    elcodi.core.banner.entity.banner_zone.instance:
+        class: %elcodi.core.banner.entity.banner_zone.class%
+        factory_service: elcodi.core.banner.factory.banner_zone
+        factory_method: create
+        scope: prototype
+
+    elcodi.entity.banner_zone.instance:
+        alias: elcodi.core.banner.entity.banner_zone.instance
